@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { addUser, updateUser } from '../services/userService';
+import { toast } from 'react-toastify';
 
 const UserForm = ({ userToEdit, onFormSubmit, handleFormClose, setUsers }) => {
   const [user, setUser] = useState(
@@ -21,17 +22,21 @@ const UserForm = ({ userToEdit, onFormSubmit, handleFormClose, setUsers }) => {
             return [response ,...filtered];
         })
       } else {
-        await addUser(user);
+        let response = await addUser(user);
+        setUsers((prev)=>([...prev,response]));
+        // console.log("toast");
+        // toast("user added");
       }
       onFormSubmit();
     } catch (error) {
       console.error(error);
+      //show error to user
     }
   };
 
   return (
         <div style={{
-                border: "2px solid green",
+                border: "2px solid gray",
                 top:"50vh",
                 left:"30vw",
                 width:"50vw",
