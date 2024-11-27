@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import UserList from './components/UserList';
 import UserForm from './components/UserForm';
-import { getUsers, deleteUser, addUser } from './services/userService';
+import { getUsers } from './services/userService';
 // import { ToastContainer, toast } from 'react-toastify';
 
 const App = () => {

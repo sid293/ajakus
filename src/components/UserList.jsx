@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUsers, deleteUser } from '../services/userService';
+import { deleteUser } from '../services/userService';
 import ErrorMessage from './ErrorMessage';
 
 const UserList = ({ onEdit, users, setUsers }) => {
