@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import UserList from './components/UserList';
 import UserForm from './components/UserForm';
 import { getUsers, deleteUser, addUser } from './services/userService';
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 
 const App = () => {
   const [editingUser, setEditingUser] = useState(null);
@@ -57,8 +57,8 @@ const App = () => {
         </div>
       )}
       <div style={{ width:"100%",height:"20%"}}>
-      <ToastContainer
-      // style={{border:"2px solid blue", width:"100%",height:"20%"}}
+      {/* <ToastContainer
+      style={{border:"2px solid blue", width:"100%",height:"20%"}}
         position="bottom-right"
         autoClose={5000}
         hideProgressBar={true}
@@ -69,7 +69,7 @@ const App = () => {
         draggable
         pauseOnHover
         theme="dark"
-      />
+      /> */}
       </div>
     </div>
   );
