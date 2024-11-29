@@ -35,42 +35,56 @@ const UserForm = ({ userToEdit, onFormSubmit, handleFormClose, setUsers }) => {
   };
 
   return (
-        <div style={{
-                border: "2px solid gray",
-                top:"50vh",
-                left:"30vw",
-                width:"50vw",
-                height:"50vh"
-        }}>
-            <button onClick={handleFormClose}>X</button>
-            <form onSubmit={handleSubmit}  className="user-form">
-                <input
-                    type="text"
-                    name="name"
-                    value={user.name}
-                    onChange={handleChange}
-                    placeholder="Full Name"
-                    required
-                />
-                <input
-                    type="email"
-                    name="email"
-                    value={user.email}
-                    onChange={handleChange}
-                    placeholder="Email"
-                    required
-                />
-                <input
-                    type="text"
-                    name="department"
-                    value={user.department}
-                    onChange={handleChange}
-                    placeholder="Department"
-                />
-                <button type="submit">Save</button>
-            </form>
-        </div>
-    );
+    <div style={{
+      border: "2px solid gray",
+      top: "50vh",
+      left: "30vw",
+      width: "50vw",
+      height: "50vh"
+    }}>
+      <div style={{
+        width: "100%",
+        height:"50px",
+      }}>
+        <button style={{
+          float: "right",
+        }} onClick={handleFormClose}>X</button>
+      </div>
+      <form style={{
+        display:"flex",
+        flexDirection:"column",
+        justifyContent:"center",
+        alignItems:"center",
+        height:"80%",
+        rowGap:"10%"
+      }} onSubmit={handleSubmit} className="user-form">
+        <input
+          type="text"
+          name="name"
+          value={user.name}
+          onChange={handleChange}
+          placeholder="Full Name"
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          value={user.email}
+          onChange={handleChange}
+          placeholder="Email"
+          required
+        />
+        <input
+          type="text"
+          name="department"
+          value={user.department}
+          onChange={handleChange}
+          placeholder="Department"
+        />
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  );
 };
 
 export default UserForm;

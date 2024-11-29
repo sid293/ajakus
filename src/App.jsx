@@ -20,8 +20,18 @@ const App = () => {
     //addUser 
     // setEditingUser({ name: '', email: '', department: '' });
     setShowForm(true);
-        // console.log("toast");
-        // toast("user added", {position:"bottom-right",autoClose:1000});
+    // console.log("toast");
+    // toast("user added", { position: "bottom-right", autoClose: 1000 });
+    // toast.info('🦄 Wow so easy!', {
+    //   position: "bottom-right",
+    //   autoClose: 1000,
+    //   hideProgressBar: false,
+    //   closeOnClick: false,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    //   theme: "dark",
+    // });
 
   }
 
@@ -57,20 +67,21 @@ const App = () => {
         </div>
       )}
       <div style={{ width:"100%",height:"20%"}}>
-      {/* <ToastContainer
-      style={{border:"2px solid blue", width:"100%",height:"20%"}}
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      /> */}
       </div>
+      {/* <ToastContainer
+          style={{ border: "2px solid blue", width: "300px", height: "200px" }}
+          position="bottom-right"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition:Bounce
+      /> */}
     </div>
   );
 };
