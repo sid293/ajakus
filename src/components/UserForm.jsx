@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
 import { addUser, updateUser } from '../services/userService';
-// import { toast } from 'react-toastify';
+import Joi from 'joi';
 
 const UserForm = ({ userToEdit, onFormSubmit, handleFormClose, setUsers }) => {
   const [user, setUser] = useState(
     userToEdit || { name: '', email: '', department: '' }
   );
+  let [error, setError] = useState("");
+
+  const schema = Joi.object({
+    name: Joi.string().min(3).required().label('Name'),
+    email: Joi.string().email({ tlds: { allow: false } }).required().label('Email'),
+    department: Joi.string().min(3).optional().label('Department'),
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
+    let inputValidation = schema.validate({ ...user, [name]: value });
+    if(inputValidation.error){
+      setError(inputValidation.error.message);
+    }else{
+      setError("");
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -21,15 +34,16 @@ const UserForm = ({ userToEdit, onFormSubmit, handleFormClose, setUsers }) => {
             let filtered = prev.filter((ele)=> (ele.id !== response.id));
             return [response ,...filtered];
         })
+        window.alert("user edited");
       } else {
         let response = await addUser(user);
         setUsers((prev)=>([...prev,response]));
-        // console.log("toast");
-        // toast("user added");
+        window.alert("user added");
       }
       onFormSubmit();
     } catch (error) {
       console.error(error);
+      window.alert("Error: ",error);
       //show error to user
     }
   };
@@ -83,6 +97,9 @@ const UserForm = ({ userToEdit, onFormSubmit, handleFormClose, setUsers }) => {
         />
         <button type="submit">Save</button>
       </form>
+      {error && 
+        <p style={{color:"red"}}>{error}</p>
+      }
     </div>
   );
 };
